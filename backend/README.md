@@ -1,7 +1,5 @@
 # ProvedCode
 
-![main_page](images/Pasted%20image%2020240206203835.png)
-
 ## Prerequisites:
 - JDK 17 or later
 
