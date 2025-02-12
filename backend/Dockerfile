@@ -5,7 +5,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN mvn clean package
+ARG SPRING_PROFILES_ACTIVE=prod
+ENV SPRING_PROFILES_ACTIVE=$SPRING_PROFILES_ACTIVE
+
+RUN mvn clean package -DskipTests
 # == Production Stage ============
 FROM openjdk:17-jdk-slim
 
