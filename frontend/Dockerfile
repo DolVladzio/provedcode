@@ -1,5 +1,5 @@
 # == Build Stage =================
-FROM node:16-alpine AS build
+FROM node:iron-alpine3.21 AS build
 
 WORKDIR /app
 
@@ -9,10 +9,11 @@ RUN npm i
 
 COPY . .
 
-RUN npm run build
+CMD [ "npm", "start" ]
+# RUN npm run build
 # == Production Stage =============
-FROM nginx:stable-alpine AS production
+# FROM nginx:stable-alpine3.20-slim AS production
 
-COPY --from=build /app/build/ /usr/share/nginx/html
+# COPY --from=build /app/build/ /usr/share/nginx/html
 
-EXPOSE 80
+# EXPOSE 80
