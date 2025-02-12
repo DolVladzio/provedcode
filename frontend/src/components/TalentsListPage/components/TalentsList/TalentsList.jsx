@@ -21,7 +21,7 @@ export function TalentsList() {
   const [talents, setTalents] = useState([]);
 
   useEffect(() => {
-    fetch('/api/v2/talents') // Adjust the endpoint as needed
+    fetch('/api/talents') // Adjust the endpoint as needed
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
