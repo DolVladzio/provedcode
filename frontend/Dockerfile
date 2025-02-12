@@ -9,11 +9,10 @@ RUN npm i
 
 COPY . .
 
-CMD [ "npm", "start" ]
-# RUN npm run build
+RUN npm run build
 # == Production Stage =============
-# FROM nginx:stable-alpine3.20-slim AS production
+FROM nginx:stable-alpine3.20-slim AS production
 
-# COPY --from=build /app/build/ /usr/share/nginx/html
+COPY --from=build /app/build/ /usr/share/nginx/html
 
-# EXPOSE 80
+EXPOSE 3000
