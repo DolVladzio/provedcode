@@ -2,8 +2,7 @@ import axios from "axios";
 import { encode as base64_encode } from "base-64";
 
 const axiosInstance = axios.create({
-    //baseURL: `${process.env.REACT_APP_BASE_URL}/api`,
-    baseURL: "http://backend:8080/api",
+    baseURL: `${process.env.REACT_APP_BASE_URL}/api`,
 });
 
 export const TalentsService = {
