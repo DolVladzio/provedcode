@@ -3,8 +3,7 @@ import { encode as base64_encode } from "base-64";
 
 const axiosInstance = axios.create({
     //baseURL: `${process.env.REACT_APP_BASE_URL}/api`,
-    //baseURL: `${process.env.REACT_APP_BASE_URL}`,
-    baseURL: window.env.REACT_APP_BASE_URL || "/api",
+    baseURL: "/api",
 });
 
 export const TalentsService = {
