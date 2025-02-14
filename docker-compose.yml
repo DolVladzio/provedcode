@@ -2,7 +2,7 @@
 version: '3.8'
 #--------------------------
 services:
-#--------------------------
+  # == DB =====================
   db:
     image: postgres:13.18-alpine3.20
     container_name: db
@@ -18,7 +18,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-  #--------------------------
+  #== Backend =================
   backend:
     build:
       context: ./backend
@@ -35,7 +35,7 @@ services:
       - mynetwork
     depends_on:
       - db
-  #--------------------------
+  #== Frontend ================
   frontend:
     build:
       context: ./frontend
@@ -54,7 +54,7 @@ services:
       - mynetwork
     depends_on:
       - backend
-#--------------------------
+# == Networks =================
 networks:
   mynetwork:
     driver: bridge
