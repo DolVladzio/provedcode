@@ -1,18 +1,22 @@
 # == Build Stage =================
-FROM node:iron-alpine3.21 AS build
+FROM node:16-alpine AS build
 
 WORKDIR /app
 
+ARG REACT_APP_BASE_URL
+ENV REACT_APP_BASE_URL=$REACT_APP_BASE_URL
+
 COPY package*.json ./
-
 RUN npm i
-
 COPY . .
 
 RUN npm run build
 # == Production Stage =============
-FROM nginx:stable-alpine3.20-slim AS production
+FROM nginx:stable-alpine3.20-slim
 
 COPY --from=build /app/build/ /usr/share/nginx/html
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 3000
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
