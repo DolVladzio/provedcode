@@ -14,5 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the backend' Dockerfile to test
-      run: docker build -t java ./backend
+#    - name: Build the backend' Dockerfile to test
+#      run: docker build -t java ./backend
+    - name: Setup an infrastructure
+      run: docker compose up -d && docker compose ps
