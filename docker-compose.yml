@@ -56,7 +56,7 @@ services:
 networks:
   mynetwork:
     driver: bridge
-#--------------------------
+# == Volumes ==================
 volumes:
   postgres_data:
 #--------------------------
