@@ -4,7 +4,7 @@ FROM maven:3.8-openjdk-17-slim AS build
 WORKDIR /app
 COPY . .
 # == CI/LAUNCH =====================
-# "dev" for test(without launching)
+# "dev" for test(without launch)
 # "prod" for launch
 ARG SPRING_PROFILES_ACTIVE=prod
 ENV SPRING_PROFILES_ACTIVE=$SPRING_PROFILES_ACTIVE
