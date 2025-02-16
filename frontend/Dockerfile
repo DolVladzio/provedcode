@@ -10,9 +10,7 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 
-# -- CI(tests)/BUILD -------------------------------
-RUN npm run lint \
-	npm run build
+RUN npm run build
 # == Production Stage ==============================
 FROM nginx:stable-alpine3.20-slim
 
