@@ -1,15 +1,20 @@
-# == Build Stage =================
+# == Build Stage ===================
 FROM maven:3.8-openjdk-17-slim AS build
 
 WORKDIR /app
-
 COPY . .
-
+# == CI/LAUNCH =====================
+# "dev" for test(without launching)
+# "prod" for launch
 ARG SPRING_PROFILES_ACTIVE=prod
 ENV SPRING_PROFILES_ACTIVE=$SPRING_PROFILES_ACTIVE
 
-RUN mvn clean package -DskipTests
-# == Production Stage ============
+RUN if [ "${SPRING_PROFILES_ACTIVE}" = "dev" ]; then \
+                mvn clean verify; \
+    else \
+                mvn clean package -DskipTests; \
+    fi
+# == Production Stage ==============
 FROM openjdk:17-jdk-slim
 
 COPY --from=build /app/target/demo-0.5.0-SNAPSHOT.jar /app/demo-0.5.0-SNAPSHOT.jar
