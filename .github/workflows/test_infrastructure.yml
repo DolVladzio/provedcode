@@ -16,16 +16,10 @@ jobs:
     - name: Build the backend' Dockerfile
     # to test(dev)
     # to launch(prod)
-      run: docker build --build-arg SPRING_PROFILES_ACTIVE=prod -t backend ./backend/
+      run: docker build --build-arg SPRING_PROFILES_ACTIVE=dev -t backend ./backend/
     # == Test the frontend ====================================
     - name: Build the frontend' Dockerfile
       run: docker build -t frontend ./frontend
     # == Setup the whole infrastructure =======================
-    - name: Setup all infrastructure
-      run: docker compose up -d
-    # == Frontend' logs =======================================
-    - name: Show frontend' logs
-      run: docker logs frontend
-    # == Backend' logs ========================================
-    - name: Show backend' logs
-      run: docker logs backend
+#    - name: Setup all infrastructure
+#      run: docker compose up -d
