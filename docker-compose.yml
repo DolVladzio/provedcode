@@ -5,6 +5,7 @@ services:
   # == DB =====================
   db:
     image: postgres:13.18-alpine3.20
+    restart: always
     container_name: db
     env_file:
       - .env
@@ -22,6 +23,7 @@ services:
   backend:
     build:
       context: ./backend
+    restart: always
     container_name: backend
     env_file:
       - .env
@@ -41,6 +43,7 @@ services:
       context: ./frontend
       args:
         REACT_APP_BASE_URL: ${REACT_APP_BASE_URL}
+    restart: always
     container_name: frontend
     env_file:
       - .env
