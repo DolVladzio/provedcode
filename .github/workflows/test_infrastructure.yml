@@ -20,6 +20,12 @@ jobs:
     # == Test the frontend ====================================
     - name: Build the frontend' Dockerfile
       run: docker build -t frontend ./frontend
-    # == Test the whole infrastructure ========================
+    # == Setup the whole infrastructure =======================
     - name: Setup all infrastructure
       run: docker compose up -d
+    # == Frontend' logs =======================================
+    - name: Show frontend' logs
+      run: docker logs frontend
+    # == Backend' logs ========================================
+    - name: Show backend' logs
+      run: docker logs backend
