@@ -6,7 +6,7 @@ COPY . .
 # == CI/LAUNCH =====================
 # "dev" for test(without launch)
 # "prod" for launch
-ARG SPRING_PROFILES_ACTIVE=prod
+ARG SPRING_PROFILES_ACTIVE
 ENV SPRING_PROFILES_ACTIVE=$SPRING_PROFILES_ACTIVE
 
 RUN if [ "${SPRING_PROFILES_ACTIVE}" = "dev" ]; then \
