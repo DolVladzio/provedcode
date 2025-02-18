@@ -13,17 +13,20 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     # == Test the frontend ====================================
-    - name: Build the backend' Dockerfile
-      run: docker build --build-arg SPRING_PROFILES_ACTIVE=dev -t backend ./backend/
+    #- name: Build the backend' Dockerfile
+      #run: docker build --build-arg SPRING_PROFILES_ACTIVE=dev -t backend ./backend/
     # == Test the frontend ====================================
-    - name: Build the frontend' Dockerfile
-      run: docker build -t frontend ./frontend
+    #- name: Build the frontend' Dockerfile
+      #run: docker build -t frontend ./frontend
     # == Setup the whole infrastructure =======================
     - name: Setup all infrastructure
       run: docker compose up -d
-    # == Looking for any error/issues =========================
-    - name: Check backend' logs
-      run: docker logs backend
+    # == ===
+    - name: Waiting 10sec 
+      run: sleep 10
     # == Looking for any error/issues =========================
     - name: Check frontend' logs
       run: docker logs frontend
+    # == Looking for any error/issues =========================
+    - name: Check backend' logs
+      run: docker logs backend
