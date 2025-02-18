@@ -3,7 +3,7 @@ FROM node:16-alpine AS build
 
 WORKDIR /app
 
-ARG REACT_APP_BASE_URL
+ARG REACT_APP_BASE_URL=http://backend:8080
 ENV REACT_APP_BASE_URL=$REACT_APP_BASE_URL
 
 COPY package*.json ./
