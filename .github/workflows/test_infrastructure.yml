@@ -21,8 +21,8 @@ jobs:
     # == Setup the whole infrastructure =======================
     - name: Setup all infrastructure
       run: docker compose up -d
-    # == ===
-    - name: Waiting 10sec 
+    # == Wait 10sec to get backend' logs ======================
+    - name: Waiting 10sec
       run: sleep 10
     # == Looking for any error/issues =========================
     - name: Check frontend' logs
@@ -30,3 +30,6 @@ jobs:
     # == Looking for any error/issues =========================
     - name: Check backend' logs
       run: docker logs backend
+    # == Login to the DockerHub ===============================
+    - name: Login to the DockerHub
+      run: docker login -u ${{ DOCKER_LOGIN }} -p ${{ DOCKER_PASSWORD }}
