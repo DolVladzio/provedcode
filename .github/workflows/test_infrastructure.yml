@@ -12,12 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    # == Test the backend =====================================
-    - name: Build the backend' Dockerfile
-      run: docker build --build-arg SPRING_PROFILES_ACTIVE=dev -t backend ./backend/
-    # == Test the frontend ====================================
-    - name: Build the frontend' Dockerfile
-      run: docker build -t frontend ./frontend
     # # == Setup the whole infrastructure =====================
     - name: Setup all infrastructure
       run: docker compose up -d
