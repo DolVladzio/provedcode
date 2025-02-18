@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Compose
+      env:
+          DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     # == Test the frontend ====================================
     - name: Build the backend' Dockerfile
       run: docker build --build-arg SPRING_PROFILES_ACTIVE=dev -t backend ./backend/
@@ -32,4 +36,4 @@ jobs:
       run: docker logs backend
     # == Login to the DockerHub ===============================
     - name: Login to the DockerHub
-      run: docker login -u ${{ DOCKER_LOGIN }} -p ${{ DOCKER_PASSWORD }}
+      run: docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
