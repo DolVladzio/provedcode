@@ -29,7 +29,7 @@ jobs:
       run: sleep 10
     # Look for created tables
     - name: Check db' tables
-      run: docker exec -it db psql -U "${{ secrets.POSTGRES_USER }}" -d "${{ secrets.POSTGRES_DB }}" -c "\dt"
+      run: docker exec db psql -U "${{ secrets.POSTGRES_USER }}" -d "${{ secrets.POSTGRES_DB }}" -c "\dt"
     # == Looking for any error/issues =========================
     - name: Check frontend' logs
       run: docker logs frontend
