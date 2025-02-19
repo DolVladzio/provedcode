@@ -42,5 +42,5 @@ jobs:
     # == Pushing backend and frontend images to the DockerHub
     - name: Pushing images
       run: |
-        docker image push ${{ secrets.DOCKER_LOGIN }}/provedcode-frontend:latest
-        docker image push ${{ secrets.DOCKER_LOGIN }}/provedcode-backend:latest
+        docker image push ${{ secrets.DOCKER_LOGIN }}-frontend:latest
+        docker image push ${{ secrets.DOCKER_LOGIN }}-backend:latest
