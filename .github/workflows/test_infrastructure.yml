@@ -41,6 +41,7 @@ jobs:
       run: docker login -u "${{ secrets.DOCKER_LOGIN }}" -p "${{ secrets.DOCKER_PASSWORD }}"
     # == Pushing backend and frontend images to the DockerHub
     - name: Pushing images
-      run: |
-        docker image push ${{ secrets.DOCKER_LOGIN }}/provedcode_frontend:latest
-        docker image push ${{ secrets.DOCKER_LOGIN }}/provedcode_backend:latest
+      run: docker images
+      #run: |
+        #docker image push ${{ secrets.DOCKER_LOGIN }}/provedcode_frontend:latest
+        #docker image push ${{ secrets.DOCKER_LOGIN }}/provedcode_backend:latest
