@@ -38,10 +38,9 @@ jobs:
       run: docker logs backend
     # == Login to the DockerHub ===============================
     - name: Login to the DockerHub
-      run: docker login -u "${{ secrets.DOCKER_LOGIN }}" -p "${{ secrets.DOCKER_PASSWORD }}"
+      run: docker login -u "${{ secrets.DOCKER_LOGIN }}" -p "${{ secrets.DOCKER_PASSWORD }}" --password-stdin
     # == Pushing backend and frontend images to the DockerHub
     - name: Pushing images
-      run: docker images
-      #run: |
-        #docker image push ${{ secrets.DOCKER_LOGIN }}/provedcode_frontend:latest
-        #docker image push ${{ secrets.DOCKER_LOGIN }}/provedcode_backend:latest
+      run: |
+        docker image push ${{ secrets.DOCKER_LOGIN }}/provedcode-frontend:latest
+        docker image push ${{ secrets.DOCKER_LOGIN }}/provedcode-backend:latest
