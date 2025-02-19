@@ -38,7 +38,7 @@ jobs:
       run: docker logs backend
     # == Login to the DockerHub ===============================
     - name: Login to the DockerHub
-      run: docker login -u "${{ secrets.DOCKER_LOGIN }}" -p "${{ secrets.DOCKER_PASSWORD }}" --password-stdin
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_LOGIN }}" --password-stdin
     # == Pushing backend and frontend images to the DockerHub
     - name: Pushing images
       run: |
