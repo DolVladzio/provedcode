@@ -39,8 +39,13 @@ jobs:
     # == Login to the DockerHub ===============================
     - name: Login to the DockerHub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_LOGIN }}" --password-stdin
-    # == Pushing backend and frontend images to the DockerHub
-    - name: Pushing images
+    # == Tag images for DockerHub ========================
+    - name: Tag frontend and backend images
       run: |
-        docker image push ${{ secrets.DOCKER_LOGIN }}-frontend
-        docker image push ${{ secrets.DOCKER_LOGIN }}-backend
+        docker tag ***-frontend ${{ secrets.DOCKER_LOGIN }}/frontend
+        docker tag ***-backend ${{ secrets.DOCKER_LOGIN }}/backend
+    # == Push images to DockerHub ========================
+    - name: Push images to DockerHub
+      run: |
+        docker image push ${{ secrets.DOCKER_LOGIN }}/frontend
+        docker image push ${{ secrets.DOCKER_LOGIN }}/backend
