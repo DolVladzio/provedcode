@@ -19,6 +19,7 @@ jobs:
         echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
         echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> .env
         echo "DB_URL=${{ secrets.DB_URL }}" >> .env
+        echo "SPRING_PROFILES_ACTIVE=${{ secrets.SPRING_PROFILES_ACTIVE }}" >> .env
         echo "REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}" >> .env
     # == Setup the whole infrastructure =======================
     - name: Setup all infrastructure
