@@ -28,7 +28,7 @@ jobs:
         POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
         POSTGRES_DB=${{ secrets.POSTGRES_DB }}
         DB_URL=${{ secrets.DB_URL }}
-        SPRING_PROFILES_ACTIVE=${{ secrets.SPRING_PROFILES_ACTIVE }}
+        echo "SPRING_PROFILES_ACTIVE=${{ secrets.SPRING_PROFILES_ACTIVE }}" >> .env
         REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}
         docker compose up -d
     # == Wait 10sec to get backend' logs ======================
