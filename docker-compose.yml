@@ -21,15 +21,14 @@ services:
   backend:
     build:
       context: ./backend
-      args:
-        SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
     restart: always
     container_name: backend
+    env_file:
+      - .env
     environment:
       DB_URL: ${DB_URL}
       DB_LOGIN: ${POSTGRES_USER}
       DB_PASSWORD: ${POSTGRES_PASSWORD}
-      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
     ports:
       - "8080:8080"
     networks:
