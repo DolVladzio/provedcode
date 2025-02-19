@@ -42,10 +42,10 @@ jobs:
     # == Tag images for DockerHub ========================
     - name: Tag frontend and backend images
       run: |
-        docker tag ***-frontend ${{ secrets.DOCKER_LOGIN }}/frontend
-        docker tag ***-backend ${{ secrets.DOCKER_LOGIN }}/backend
+        docker tag ***-frontend ${{ secrets.DOCKER_LOGIN }}/frontend:latest
+        docker tag ***-backend ${{ secrets.DOCKER_LOGIN }}/backend:latest
     # == Push images to DockerHub ========================
     - name: Push images to DockerHub
       run: |
-        docker image push ${{ secrets.DOCKER_LOGIN }}/frontend
-        docker image push ${{ secrets.DOCKER_LOGIN }}/backend
+        docker image push ${{ secrets.DOCKER_LOGIN }}/frontend:latest
+        docker image push ${{ secrets.DOCKER_LOGIN }}/backend:latest
