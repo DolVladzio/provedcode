@@ -45,8 +45,6 @@ services:
     image: ${DOCKER_LOGIN}/backend
     restart: always
     container_name: frontend
-    volumes:
-      - ./frontend/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "80:80"
     networks:
