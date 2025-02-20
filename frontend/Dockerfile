@@ -3,7 +3,7 @@ FROM node:16-alpine AS build
 
 WORKDIR /app
 
-ARG REACT_APP_BASE_URL=http://backend:8080
+ARG REACT_APP_BASE_URL
 ENV REACT_APP_BASE_URL=$REACT_APP_BASE_URL
 
 COPY package*.json ./
@@ -15,6 +15,7 @@ RUN npm run build
 FROM nginx:stable-alpine3.20-slim
 
 COPY --from=build /app/build/ /usr/share/nginx/html
+COPYP ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
