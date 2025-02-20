@@ -15,7 +15,7 @@ RUN npm run build
 FROM nginx:stable-alpine3.20-slim
 
 COPY --from=build /app/build/ /usr/share/nginx/html
-COPYP ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
