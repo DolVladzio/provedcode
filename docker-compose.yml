@@ -21,7 +21,7 @@ services:
   backend:
     build:
       context: ./backend
-    image: ${DOCKER_LOGIN}/frontend
+    image: ${DOCKER_LOGIN}/backend
     restart: always
     container_name: backend
     env_file:
@@ -42,7 +42,7 @@ services:
       context: ./frontend
       args:
         REACT_APP_BASE_URL: ${REACT_APP_BASE_URL}
-    image: ${DOCKER_LOGIN}/backend
+    image: ${DOCKER_LOGIN}/frontend
     restart: always
     container_name: frontend
     ports:
