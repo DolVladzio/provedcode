@@ -45,3 +45,7 @@ jobs:
       #run: |
         #docker push ${{ secrets.DOCKER_LOGIN }}/frontend
         #docker push ${{ secrets.DOCKER_LOGIN }}/backend
+    - name: Test containers functionality
+      uses: cypress-io/github-action@v6
+      with:
+        working-directory: ./.github/tests
