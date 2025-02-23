@@ -42,6 +42,6 @@ jobs:
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_LOGIN }}" --password-stdin
     # == Push images to DockerHub ========================
     - name: Push images to DockerHub
-      run: |
-        docker push ${{ secrets.DOCKER_LOGIN }}/frontend
-        docker push ${{ secrets.DOCKER_LOGIN }}/backend
+      #run: |
+        #docker push ${{ secrets.DOCKER_LOGIN }}/frontend
+        #docker push ${{ secrets.DOCKER_LOGIN }}/backend
