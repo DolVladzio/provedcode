@@ -10,9 +10,14 @@ describe('ProvedCode infrasrtucture tests', () => {
       .contains('Register')
       .should('be.visible')
       .click();
-    // // == Register info ===============================
-    // cy.get('input[name="first_name"]').type('Vladzio');
-    // cy.get('input[name="last_name"]').type('Dolynka');
+    // == First/Last names =============================
+    cy.get('.AuthModal_modal__VOT9o input[name="first_name"]')
+      .should('be.visible')
+      .type('Vladzio');
+
+    cy.get('.AuthModal_modal__VOT9o input[name="last_name"]')
+    .should('be.visible')
+    .type('Dolynka');
 
     // cy.get('input[name="login"]').type('dolynkavladzio@gmail.com');
 
