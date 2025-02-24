@@ -3,7 +3,13 @@ describe('ProvedCode infrasrtucture tests', () => {
     cy.visit('/');
     // == Buttons =====================================
     cy.contains('button', 'Login / Register').click();
-    cy.contains('button', 'Register').click();
+
+    cy.get('.AuthModal_modal__VOT9o').should('be.visible');
+
+    cy.get('.AuthModal_modal__VOT9o button')
+      .contains('Register')
+      .should('be.visible')
+      .click();
     // // == Register info ===============================
     // cy.get('input[name="first_name"]').type('Vladzio');
     // cy.get('input[name="last_name"]').type('Dolynka');
