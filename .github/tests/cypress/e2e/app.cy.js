@@ -10,7 +10,7 @@ describe('ProvedCode infrasrtucture tests', () => {
       .contains('Register')
       .should('be.visible')
       .click();
-    // == First/Last names =============================
+    // == Register info ================================
     cy.get('.AuthModal_modal__VOT9o input[name="first_name"]')
       .should('be.visible')
       .type('Vladzio');
@@ -18,6 +18,14 @@ describe('ProvedCode infrasrtucture tests', () => {
     cy.get('.AuthModal_modal__VOT9o input[name="last_name"]')
     .should('be.visible')
     .type('Dolynka');
+
+    cy.get('.AuthModal_modal__VOT9o input[name="login"]')
+    .should('be.visible')
+    .type('dolynkavladzio@gmail.com');
+
+    cy.get('.AuthModal_modal__VOT9o input[name="specialization"]')
+    .should('be.visible')
+    .type('DevOps');
 
     // cy.get('input[name="login"]').type('dolynkavladzio@gmail.com');
 
