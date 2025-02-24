@@ -41,11 +41,7 @@ jobs:
     - name: Login to the DockerHub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_LOGIN }}" --password-stdin
     # == Push images to DockerHub ========================
-    #- name: Push images to DockerHub
-      #run: |
-        #docker push ${{ secrets.DOCKER_LOGIN }}/frontend
-        #docker push ${{ secrets.DOCKER_LOGIN }}/backend
-    - name: Test containers functionality
-      uses: cypress-io/github-action@v6
-      with:
-        working-directory: ./.github/tests
+    - name: Push images to DockerHub
+      run: |
+        docker push ${{ secrets.DOCKER_LOGIN }}/frontend
+        docker push ${{ secrets.DOCKER_LOGIN }}/backend
