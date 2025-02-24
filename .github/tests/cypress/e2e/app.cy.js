@@ -3,7 +3,7 @@ describe('ProvedCode infrasrtucture tests', () => {
     cy.visit('/');
     // == Buttons =====================================
     cy.contains('button', 'Login / Register').click();
-    // cy.get('button[name="AuthModal_header_btn__sPgN2"]').click();
+    cy.contains('button', 'Register').click();
     // // == Register info ===============================
     // cy.get('input[name="first_name"]').type('Vladzio');
     // cy.get('input[name="last_name"]').type('Dolynka');
