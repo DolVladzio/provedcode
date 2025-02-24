@@ -37,11 +37,18 @@ jobs:
     # == Looking for any error/issues =========================
     - name: Check backend' logs
       run: docker logs backend
+    # ==
+    - name: Testing website
+      uses: cypress-io/github-action@v6
+      env:
+        CYPRESS_BASE_URL: http://localhost:80
+      with:
+        working-directory: ./.github/tests
     # == Login to the DockerHub ===============================
-    - name: Login to the DockerHub
-      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_LOGIN }}" --password-stdin
+    #- name: Login to the DockerHub
+      #run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_LOGIN }}" --password-stdin
     # == Push images to DockerHub ========================
-    - name: Push images to DockerHub
-      run: |
-        docker push ${{ secrets.DOCKER_LOGIN }}/frontend
-        docker push ${{ secrets.DOCKER_LOGIN }}/backend
+    #- name: Push images to DockerHub
+      #run: |
+        #docker push ${{ secrets.DOCKER_LOGIN }}/frontend
+        #docker push ${{ secrets.DOCKER_LOGIN }}/backend
