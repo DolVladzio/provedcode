@@ -26,15 +26,18 @@ describe('ProvedCode infrasrtucture tests', () => {
     cy.get('.AuthModal_modal__VOT9o input[name="specialization"]')
     .should('be.visible')
     .type('DevOps');
+    // == Password ======================================
+    cy.get('.AuthModal_modal__VOT9o input[name="password"]')
+    .should('be.visible')
+    .type('Programist');
 
-    // cy.get('input[name="login"]').type('dolynkavladzio@gmail.com');
-
-    // cy.get('input[name="specialization"]').type('DevOps');
-
-    // cy.get('input[name="password"]').type('Programist');
-
-    // cy.get('input[name="repeated_password"]').type('Programist');
-
-    // cy.get('button[name="Register_btn__Ctx1+"]').click();
+    cy.get('.AuthModal_modal__VOT9o input[name="repeated_password"]')
+    .should('be.visible')
+    .type('Programist');
+    // == Button 'Login' ================================
+    cy.get('.AuthModal_modal__VOT9o button')
+      .contains('Login')
+      .should('be.visible')
+      .click();
   });
 });
