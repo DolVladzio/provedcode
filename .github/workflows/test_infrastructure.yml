@@ -41,7 +41,7 @@ jobs:
     - name: Testing website
       uses: cypress-io/github-action@v6
       env:
-        CYPRESS_BASE_URL: http://localhost:80
+        CYPRESS_BASE_URL: "{{ secrets.CYPRESS_BASE_URL }}"
       with:
         working-directory: ./.github/tests
     # == Login to the DockerHub ===============================
