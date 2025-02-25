@@ -12,11 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    # == Cloning the private repositories ================== ==
-    - name: Cloning the repositories
-      run: |
-        git clone https://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@github.com/DevOps-ProjectLevel/provedcode-frontend-DolVladzio.git frontend
-        git clone https://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@github.com/DevOps-ProjectLevel/provedcode-backend-DolVladzio.git backend
     # == Create .env file and set all necessary envs ==========    
     - name: Creating .env file with necessary envs
       run: |
