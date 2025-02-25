@@ -1,1 +1,0 @@
-export { SponsorData } from "./SponsorData";

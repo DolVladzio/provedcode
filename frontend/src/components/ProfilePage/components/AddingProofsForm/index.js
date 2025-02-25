@@ -1,1 +1,0 @@
-export { AddingProofsForm } from "./AddingProofsForm";
