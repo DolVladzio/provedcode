@@ -37,7 +37,7 @@ jobs:
     # == Looking for any error/issues =========================
     - name: Check backend' logs
       run: docker logs backend
-    # ==
+    # == Test a website before push to the DockerHub =====================
     - name: Testing website
       uses: cypress-io/github-action@v6
       env:
