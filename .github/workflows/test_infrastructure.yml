@@ -16,9 +16,9 @@ jobs:
     - name: Cloning the repositories
       run: |
         # == Frontend's repository ============================
-        git clone https://"{{ secrets.TOKEN_GITHUB }}"@github.com/DevOps-ProjectLevel/provedcode-frontend-DolVladzio.git frontend
+        git clone https://{{ secrets.TOKEN_GITHUB }}@github.com/DevOps-ProjectLevel/provedcode-frontend-DolVladzio.git frontend
         # == Backend's repository =============================
-        git clone https://"{{ secrets.TOKEN_GITHUB }}"@github.com/DevOps-ProjectLevel/provedcode-backend-DolVladzio.git backend
+        git clone https://{{ secrets.TOKEN_GITHUB }}@github.com/DevOps-ProjectLevel/provedcode-backend-DolVladzio.git backend
     # == Create .env file and set all necessary envs ==========    
     - name: Creating .env file with necessary envs
       run: |
