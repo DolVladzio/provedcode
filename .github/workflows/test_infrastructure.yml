@@ -62,3 +62,17 @@ jobs:
     # == Configure AWS ===================================
     - name: Testing data
       run: aws sts get-caller-identity
+    # == Install Terraform ===============================
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.4.0
+    # == Initialize/Validation Terraform =================
+    - name: Terraform Init
+      run: cd ./EKS/terraform && terraform init && terraform validate
+    # == Plan Terraform changes ==========================
+    - name: Terraform Plan
+      run: terraform plan
+    # == Launch Terraform ================================
+    - name: Run Terraform
+      run: terraform apply --auto-approve
