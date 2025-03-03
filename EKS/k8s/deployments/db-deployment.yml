@@ -1,0 +1,41 @@
+# == Deployment ========================================
+apiVersion: apps/v1
+kind: Deployment
+# ----------------------------
+metadata:
+  name: db-deployment
+  labels:
+    app: db
+# ----------------------------
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  # ----------------------------
+  template:
+    metadata:
+      labels:
+        app: db
+    # ----------------------------
+    spec:
+      containers:
+      - name: db
+        image: postgres:13.18-alpine3.20
+        # ----------------------------
+        ports:
+        - containerPort: 5432
+        # ----------------------------
+        envFrom:
+        - configMapRef:
+            name: app-config
+        # ----------------------------
+        volumeMounts:
+          - name: db-data
+            mountPath: /var/lib/postgresql/data
+      # ----------------------------
+      volumes:
+      - name: db-data
+        emptyDir: {}
+      # ----------------------------
+      restartPolicy: Always

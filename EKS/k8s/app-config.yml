@@ -1,0 +1,18 @@
+# == ConfigMap ===================================
+apiVersion: v1
+kind: ConfigMap
+# ----------------------------
+metadata:
+  name: app-config
+  namespace: default
+# ----------------------------
+data:
+  # == Frontend envs ==================
+  REACT_APP_BASE_URL: /api
+  # == Backend/DB envs ==================
+  POSTGRES_DB: provedcode
+  POSTGRES_USER: app_user
+  POSTGRES_PASSWORD: app_pass
+  DB_URL: db-service:5432/provedcode
+  SPRING_PROFILES_ACTIVE: prod
+  # ----------------------------
