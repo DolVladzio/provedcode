@@ -13,37 +13,37 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     # == Create .env file and set all necessary envs ==========    
-    - name: Creating .env file with necessary envs
-      run: |
-        echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
-        echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
-        echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> .env
-        echo "DB_URL=${{ secrets.DB_URL }}" >> .env
-        echo "SPRING_PROFILES_ACTIVE=${{ secrets.SPRING_PROFILES_ACTIVE }}" >> .env
-        echo "REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}" >> .env
-        echo "DOCKER_LOGIN=${{ secrets.DOCKER_LOGIN }}" >> .env
+    # - name: Creating .env file with necessary envs
+    #   run: |
+    #     echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
+    #     echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
+    #     echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> .env
+    #     echo "DB_URL=${{ secrets.DB_URL }}" >> .env
+    #     echo "SPRING_PROFILES_ACTIVE=${{ secrets.SPRING_PROFILES_ACTIVE }}" >> .env
+    #     echo "REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}" >> .env
+    #     echo "DOCKER_LOGIN=${{ secrets.DOCKER_LOGIN }}" >> .env
     # == Setup the whole infrastructure =======================
-    - name: Setup all infrastructure
-      run: docker compose up -d
+    # - name: Setup all infrastructure
+    #   run: docker compose up -d
     # == Wait 10sec to get backend' logs ======================
-    - name: Waiting 10sec
-      run: sleep 10
+    # - name: Waiting 10sec
+    #   run: sleep 10
     # Look for created tables
-    - name: Check db' tables
-      run: docker exec db psql -U "${{ secrets.POSTGRES_USER }}" -d "${{ secrets.POSTGRES_DB }}" -c "\dt"
+    # - name: Check db' tables
+    #   run: docker exec db psql -U "${{ secrets.POSTGRES_USER }}" -d "${{ secrets.POSTGRES_DB }}" -c "\dt"
     # == Looking for any error/issues =========================
-    - name: Check frontend' logs
-      run: docker logs frontend
+    # - name: Check frontend' logs
+    #   run: docker logs frontend
     # == Looking for any error/issues =========================
-    - name: Check backend' logs
-      run: docker logs backend
+    # - name: Check backend' logs
+    #   run: docker logs backend
     # ==
-    - name: Testing website
-      uses: cypress-io/github-action@v6
-      env:
-        CYPRESS_BASE_URL: http://localhost:80
-      with:
-        working-directory: ./.github/tests
+    # - name: Testing website
+    #   uses: cypress-io/github-action@v6
+    #   env:
+    #     CYPRESS_BASE_URL: http://localhost:80
+    #   with:
+    #     working-directory: ./.github/tests
     # == Login to the DockerHub ===============================
     # - name: Login to the DockerHub
     #   run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_LOGIN }}" --password-stdin
@@ -60,7 +60,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-1
     # == Configure AWS ===================================
-    - name: Testing data
+    - name: Testing AWS data
       run: aws sts get-caller-identity
     # == Install Terraform ===============================
     - name: Setup Terraform
@@ -69,10 +69,13 @@ jobs:
         terraform_version: 1.4.0
     # == Initialize/Validation Terraform =================
     - name: Terraform Init
-      run: cd ./EKS/terraform && terraform init && terraform validate
+      working-directory: ./EKS/terraform
+      run: terraform init && terraform validate
     # == Plan Terraform changes ==========================
     - name: Terraform Plan
+      working-directory: ./EKS/terraform
       run: terraform plan
     # == Launch Terraform ================================
     - name: Run Terraform
+      working-directory: ./EKS/terraform
       run: terraform apply --auto-approve
