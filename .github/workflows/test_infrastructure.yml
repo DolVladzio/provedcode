@@ -45,10 +45,20 @@ jobs:
       with:
         working-directory: ./.github/tests
     # == Login to the DockerHub ===============================
-    - name: Login to the DockerHub
-      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_LOGIN }}" --password-stdin
+    # - name: Login to the DockerHub
+    #   run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_LOGIN }}" --password-stdin
     # == Push images to DockerHub ========================
-    - name: Push images to DockerHub
-      run: |
-        docker push ${{ secrets.DOCKER_LOGIN }}/frontend
-        docker push ${{ secrets.DOCKER_LOGIN }}/backend
+    # - name: Push images to DockerHub
+    #   run: |
+    #     docker push ${{ secrets.DOCKER_LOGIN }}/frontend
+    #     docker push ${{ secrets.DOCKER_LOGIN }}/backend
+    # == Configure AWS ===================================
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-1
+    # == Configure AWS ===================================
+    - name: Testing data
+      run: aws sts get-caller-identity
