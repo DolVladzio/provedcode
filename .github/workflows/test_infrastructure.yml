@@ -81,4 +81,5 @@ jobs:
       run: terraform apply --auto-approve
     # == Delete everything ===============================
     - name: Deleting everything
+      working-directory: ./EKS/terraform
       run: terraform destroy --auto-approve
