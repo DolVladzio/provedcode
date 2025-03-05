@@ -13,7 +13,7 @@ variable "env" {
 #----------------------------
 variable "cluster_name" {
 	type    = string
-	default = "k8s-EKS"
+	default = "k8s-practise"
 }
 #----------------------------
 variable "cluster_version" {
