@@ -1,4 +1,6 @@
-# == Outputs ==============================
+#########################################################################
+# Outputs
+#########################################################################
 output "region" {
 	value = var.region
 }
@@ -9,7 +11,7 @@ output "cluster_name" {
 #----------------------------
 output "vpc_id" {
 	description = "The ID of the VPC"
-	value       = module.vpc.vpc_id
+	value = module.vpc.vpc_id
 }
 #----------------------------
 output "k8s_private-zone-1" {
