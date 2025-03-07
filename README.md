@@ -2,6 +2,8 @@
 
 ![](https://github.com/DolVladzio/provedcode/blob/master/proof.gif)
 
+# Directory Structure
+```bash
 ~/provedcode
 ├── .github
 |   ├── tests/
@@ -19,3 +21,4 @@
 ├── README.md
 ├── docker-compose.yml
 └── proof.gif
+```
