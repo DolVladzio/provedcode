@@ -1,32 +1,27 @@
 #########################################################################
 # Outputs
 #########################################################################
-output "region" {
-	value = var.region
-}
-#----------------------------
 output "cluster_name" {
-	value = var.cluster_name
+	value = local.name
 }
-#----------------------------
+#-----------------------------------------------------
+output "region" {
+	value = local.region
+}
+#-----------------------------------------------------
 output "vpc_id" {
-	description = "The ID of the VPC"
 	value = module.vpc.vpc_id
 }
-#----------------------------
-output "k8s_private-zone-1" {
-	value = module.subnet.k8s_private-zone-1
+#-----------------------------------------------------
+output "private_subnets" {
+	value = module.vpc.private_subnets
 }
-#----------------------------
-output "k8s_private-zone-2" {
-	value = module.subnet.k8s_private-zone-2
+#-----------------------------------------------------
+output "public_subnets" {
+	value = module.vpc.public_subnets
 }
-#----------------------------
-output "k8s_public-zone-1" {
-	value = module.subnet.k8s_public-zone-1
+#-----------------------------------------------------
+output "eks_cluster_id" {
+	value = module.eks.cluster_id
 }
-#----------------------------
-output "k8s_public-zone-2" {
-	value = module.subnet.k8s_public-zone-2
-}
-#----------------------------
+#-----------------------------------------------------
