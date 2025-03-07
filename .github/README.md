@@ -1,5 +1,7 @@
 # #GitHub
 
+# Directory Structure
+```bash
 ~/.github
 |-- tests
 |   |-- cypress
@@ -8,3 +10,4 @@
 |   `-- package.json
 `-- workflows
     `-- test_infrastructure.yml
+```
