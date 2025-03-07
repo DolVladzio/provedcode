@@ -1,5 +1,7 @@
 # #ProvedCode
 
+# Directory Structure
+```bash
 ~/frontend
 |-- Dockerfile
 |-- LICENSE
@@ -22,3 +24,4 @@
     |-- index.jsx
     |-- services
     `-- shared
+```
