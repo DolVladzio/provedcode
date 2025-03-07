@@ -1,5 +1,7 @@
 # #ProvedCode
 
+# Directory Structure
+```bash
 ~/backend
 |-- Dockerfile
 |-- LICENSE
@@ -10,3 +12,4 @@
 `-- src
     |-- main
     `-- test
+```
