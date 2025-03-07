@@ -15,6 +15,6 @@
     ├── providers.tf
     └── variables.tf
 ```
-- aws eks update-kubeconfig --region eu-central-1 --name k8s-EKS
+- ``aws eks update-kubeconfig --region eu-central-1 --name k8s-EKS``
 
-- aws sts get-caller-identity
+- ``aws sts get-caller-identity``
