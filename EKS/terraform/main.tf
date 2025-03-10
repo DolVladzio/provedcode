@@ -5,8 +5,8 @@ module "vpc" {
 	source  = "terraform-aws-modules/vpc/aws"
 	version = "~> 4.0"
 
-	name = local.name
-	cidr = local.vpc_cidr
+	name = var.AWS_EKS_CLUSTER_NAME
+	cidr = var.AWS_VPC_CIDR
 
 	azs             = local.azs
 	private_subnets = local.private_subnets
@@ -33,7 +33,7 @@ module "eks" {
 	source  = "terraform-aws-modules/eks/aws"
 	version = "20.31"
 
-	cluster_name                   = local.name
+	cluster_name                   = module.vpc.name
 	cluster_endpoint_public_access = true
 	enable_cluster_creator_admin_permissions = true
 

@@ -2,11 +2,11 @@
 # Outputs
 #########################################################################
 output "cluster_name" {
-        value = local.name
+        value = var.AWS_EKS_CLUSTER_NAME
 }
 #-----------------------------------------------------
 output "region" {
-        value = local.region
+        value = var.AWS_REGION
 }
 #-----------------------------------------------------
 output "private_subnets" {
