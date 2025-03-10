@@ -2,10 +2,10 @@
 # Variables
 #########################################################################
 locals {
-	private_subnets = ["${var.AWS_PRIVATE_SUBNET_2}", "${var.AWS_PRIVATE_SUBNET_2}"]
-	public_subnets  = ["${var.AWS_PUBLIC_SUBNET_1}", "${var.AWS_PUBLIC_SUBNET_2}"]
-	intra_subnets   = ["${var.AWS_INTRA_SUBNET_1}", "${var.AWS_INTRA_SUBNET_2}"]
-	azs				= ["${var.AWS_REGION}a", "${var.AWS_REGION}b"]
+	private_subnets = [var.AWS_PRIVATE_SUBNET_1, var.AWS_PRIVATE_SUBNET_2]
+	public_subnets  = [var.AWS_PUBLIC_SUBNET_1, var.AWS_PUBLIC_SUBNET_2]
+	intra_subnets   = [var.AWS_INTRA_SUBNET_1, var.AWS_INTRA_SUBNET_2]
+	azs             = ["${var.AWS_REGION}a", "${var.AWS_REGION}b"]
 }
 #----------------------------------------------------
 variable "AWS_EKS_CLUSTER_NAME" {
