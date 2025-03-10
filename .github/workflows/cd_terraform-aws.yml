@@ -29,15 +29,15 @@ jobs:
     - name: Debug Secrets
       working-directory: ./EKS/terraform
       run: |
-        echo "AWS_EKS_CLUSTER_NAME=${{ secrets.AWS_EKS_CLUSTER_NAME }}" >> terraform.tfvars
-        echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> terraform.tfvars
-        echo "AWS_VPC_CIDR=${{ secrets.AWS_VPC_CIDR }}" >> terraform.tfvars
-        echo "AWS_PUBLIC_SUBNET_1=${{ secrets.AWS_PUBLIC_SUBNET_1 }}" >> terraform.tfvars
-        echo "AWS_PUBLIC_SUBNET_2=${{ secrets.AWS_PUBLIC_SUBNET_2 }}" >> terraform.tfvars
-        echo "AWS_PRIVATE_SUBNET_1=${{ secrets.AWS_PRIVATE_SUBNET_1 }}" >> terraform.tfvars
-        echo "AWS_PRIVATE_SUBNET_2=${{ secrets.AWS_PRIVATE_SUBNET_2 }}" >> terraform.tfvars
-        echo "AWS_INTRA_SUBNET_1=${{ secrets.AWS_INTRA_SUBNET_1 }}" >> terraform.tfvars
-        echo "AWS_INTRA_SUBNET_2=${{ secrets.AWS_INTRA_SUBNET_2 }}" >> terraform.tfvars
+        echo "AWS_EKS_CLUSTER_NAME = ${{ secrets.AWS_EKS_CLUSTER_NAME }}" >> terraform.tfvars
+        echo "AWS_REGION = ${{ secrets.AWS_REGION }}" >> terraform.tfvars
+        echo "AWS_VPC_CIDR = ${{ secrets.AWS_VPC_CIDR }}" >> terraform.tfvars
+        echo "AWS_PUBLIC_SUBNET_1 = ${{ secrets.AWS_PUBLIC_SUBNET_1 }}" >> terraform.tfvars
+        echo "AWS_PUBLIC_SUBNET_2 = ${{ secrets.AWS_PUBLIC_SUBNET_2 }}" >> terraform.tfvars
+        echo "AWS_PRIVATE_SUBNET_1 = ${{ secrets.AWS_PRIVATE_SUBNET_1 }}" >> terraform.tfvars
+        echo "AWS_PRIVATE_SUBNET_2 = ${{ secrets.AWS_PRIVATE_SUBNET_2 }}" >> terraform.tfvars
+        echo "AWS_INTRA_SUBNET_1 = ${{ secrets.AWS_INTRA_SUBNET_1 }}" >> terraform.tfvars
+        echo "AWS_INTRA_SUBNET_2 = ${{ secrets.AWS_INTRA_SUBNET_2 }}" >> terraform.tfvars
     # == Configure Terraform/Initialize/Validate =========
     - name: Configure/Initialize/Validate Terraform
       working-directory: ./EKS/terraform
