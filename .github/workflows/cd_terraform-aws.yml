@@ -20,14 +20,29 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-central-1
-    # == Configure AWS ===================================
-    - name: Testing AWS data
-      run: aws sts get-caller-identity
     # == Install Terraform ===============================
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: 1.4.0
+    # == Configure Terraform/Initialize/Validate =========
+    - name: Setting Terraform's env
+      env:
+        AWS_EKS_CLUSTER_NAME: ${{ secrets.AWS_EKS_CLUSTER_NAME }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+        AWS_VPC_CIDR: ${{ secrets.AWS_VPC_CIDR }}
+
+        AWS_PUBLIC_SUBNET_1: ${{ secrets.AWS_PUBLIC_SUBNET_1 }}
+        AWS_PUBLIC_SUBNET_2: ${{ secrets.AWS_PUBLIC_SUBNET_2 }}
+
+        AWS_PRIVATE_SUBNET_1: ${{ secrets.AWS_PRIVATE_SUBNET_1 }}
+        AWS_PRIVATE_SUBNET_2: ${{ secrets.AWS_PRIVATE_SUBNET_2 }}
+
+        AWS_INTRA_SUBNET_1: ${{ secrets.AWS_INTRA_SUBNET_1 }}
+        AWS_INTRA_SUBNET_2: ${{ secrets.AWS_INTRA_SUBNET_2 }}
+      working-directory: ./EKS/terraform
+      run: |
+        terraform init && terraform validate
     # == Initialize/Validation Terraform =================
     - name: Terraform Init
       working-directory: ./EKS/terraform
@@ -36,14 +51,14 @@ jobs:
     - name: Terraform Plan
       working-directory: ./EKS/terraform
       run: terraform plan
-    # == Launch Terraform ================================
-    - name: Run Terraform
-      working-directory: ./EKS/terraform
-      run: terraform apply --auto-approve
-    # == ===
-    - name: Wait 3m to launch k8s locally
-      run: sleep 180
-    # == Delete everything ===============================
-    - name: Deleting everything
-      working-directory: ./EKS/terraform
-      run: terraform destroy --auto-approve
+    # # == Launch Terraform ================================
+    # - name: Run Terraform
+    #   working-directory: ./EKS/terraform
+    #   run: terraform apply --auto-approve
+    # # == ===
+    # - name: Wait 3m to launch k8s locally
+    #   run: sleep 180
+    # # == Delete everything ===============================
+    # - name: Deleting everything
+    #   working-directory: ./EKS/terraform
+    #   run: terraform destroy --auto-approve
