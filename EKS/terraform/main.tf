@@ -43,15 +43,9 @@ module "eks" {
 	cluster_security_group_id      = module.vpc.default_security_group_id
 	
 	cluster_addons = {
-		coredns = {
-			most_recent = true
-		}
-		kube-proxy = {
-			most_recent = true
-		}
-		vpc-cni = {
-			most_recent = true
-		}
+		coredns = { most_recent = true }
+		kube-proxy = { most_recent = true }
+		vpc-cni = { most_recent = true }
 	}
 
 	eks_managed_node_groups = {
@@ -64,11 +58,11 @@ module "eks" {
 			capacity_type  = "SPOT"
 
 			lifecycle = {
-				create_before_destroy = true
+					create_before_destroy = true
 			}
 		}
 	}
 
-	tags = local.tags
+	depends_on = [ module.vpc ]
 }
 #########################################################################
