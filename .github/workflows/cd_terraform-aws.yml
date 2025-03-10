@@ -32,7 +32,8 @@ jobs:
     # == Plan Terraform changes ==========================
     - name: Terraform Plan
       working-directory: ./EKS/terraform
-      run: terraform plan \
+      run: |
+        terraform plan \
         -var="AWS_EKS_CLUSTER_NAME=${{ secrets.AWS_EKS_CLUSTER_NAME }}" \
         -var="AWS_REGION=${{ secrets.AWS_REGION }}" \
         -var="AWS_VPC_CIDR=${{ secrets.AWS_VPC_CIDR }}" \
