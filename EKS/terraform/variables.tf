@@ -10,46 +10,46 @@ locals {
 #----------------------------------------------------
 variable "AWS_EKS_CLUSTER_NAME" {
 	description = "The name of the Kubernetes cluster"
-	# default     = "k8s-EKS"
+	default     = "k8s-EKS"
 }
 #----------------------------------------------------
 variable "AWS_REGION" {
 	description = "AWS region"
-	# default     = "eu-central-1"
+	default     = "eu-central-1"
 }
 #----------------------------------------------------
 variable "AWS_VPC_CIDR" {
 	description = "The CIDR block for the VPC"
-	# default     = "10.123.0.0/16"
+	default     = "10.123.0.0/16"
 }
 #----------------------------------------------------
 variable "AWS_PUBLIC_SUBNET_1" {
 	description = "Public_subnet-1"
-	# default     = "10.123.1.0/24"
+	default     = "10.123.1.0/24"
 }
 #----------------------------------------------------
 variable "AWS_PUBLIC_SUBNET_2" {
 	description = "Public_subnet-2"
-	# default     = "10.123.2.0/24"
+	default     = "10.123.2.0/24"
 }
 #----------------------------------------------------
 variable "AWS_PRIVATE_SUBNET_1" {
 	description = "Private_subnet-1"
-	# default     = "10.123.3.0/24"
+	default     = "10.123.3.0/24"
 }
 #----------------------------------------------------
 variable "AWS_PRIVATE_SUBNET_2" {
 	description = "Private_subnet-2"
-	# default     = "10.123.4.0/24"
+	default     = "10.123.4.0/24"
 }
 #----------------------------------------------------
 variable "AWS_INTRA_SUBNET_1" {
 	description = "Intra_subnet-1"
-	# default     = "10.123.5.0/24"
+	default     = "10.123.5.0/24"
 }
 #----------------------------------------------------
 variable "AWS_INTRA_SUBNET_2" {
 	description = "Intra_subnet-2"
-	# default     = "10.123.6.0/24"
+	default     = "10.123.6.0/24"
 }
 #########################################################################
