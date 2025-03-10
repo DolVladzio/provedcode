@@ -28,21 +28,19 @@ jobs:
     # == Configure Terraform/Initialize/Validate =========
     - name: Configure/Initialize/Validate Terraform
       working-directory: ./EKS/terraform
-      run: |
-        export AWS_EKS_CLUSTER_NAME=${{ secrets.AWS_EKS_CLUSTER_NAME }}
-        export AWS_REGION=${{ secrets.AWS_REGION }}
-        export AWS_VPC_CIDR=${{ secrets.AWS_VPC_CIDR }}
+      run: terraform init && terraform validate &&  \
+        terraform plan -var="AWS_EKS_CLUSTER_NAME=${{ secrets.AWS_EKS_CLUSTER_NAME }}" \
+        -var="AWS_REGION=${{ secrets.AWS_REGION }}" \
+        -var="AWS_VPC_CIDR=${{ secrets.AWS_VPC_CIDR }}" \
 
-        export AWS_PUBLIC_SUBNET_1=${{ secrets.AWS_PUBLIC_SUBNET_1 }}
-        export AWS_PUBLIC_SUBNET_2=${{ secrets.AWS_PUBLIC_SUBNET_2 }}
+        -var="AWS_PUBLIC_SUBNET_1=${{ secrets.AWS_PUBLIC_SUBNET_1 }}" \
+        -var="AWS_PUBLIC_SUBNET_2=${{ secrets.AWS_PUBLIC_SUBNET_2 }}" \
 
-        export AWS_PRIVATE_SUBNET_1=${{ secrets.AWS_PRIVATE_SUBNET_1 }}
-        export AWS_PRIVATE_SUBNET_2=${{ secrets.AWS_PRIVATE_SUBNET_2 }}
+        -var="AWS_PRIVATE_SUBNET_1=${{ secrets.AWS_PRIVATE_SUBNET_1 }}" \
+        -var="AWS_PRIVATE_SUBNET_2=${{ secrets.AWS_PRIVATE_SUBNET_2 }}" \
 
-        export AWS_INTRA_SUBNET_1=${{ secrets.AWS_INTRA_SUBNET_1 }}
-        export AWS_INTRA_SUBNET_2=${{ secrets.AWS_INTRA_SUBNET_2 }}
-
-        terraform init && terraform validate
+        -var="AWS_INTRA_SUBNET_1=${{ secrets.AWS_INTRA_SUBNET_1 }}" \
+        -var="AWS_INTRA_SUBNET_2=${{ secrets.AWS_INTRA_SUBNET_2 }}"
     # == Plan Terraform changes ==========================
     - name: Terraform Plan
       working-directory: ./EKS/terraform
