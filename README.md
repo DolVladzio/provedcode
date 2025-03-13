@@ -17,10 +17,6 @@
 |	├── k8s/
 |	└── terraform/
 |
-├── backend/
-|
-├── frontend/
-|
 ├── README.md
 ├── docker-compose.yml
 └── proof.gif
