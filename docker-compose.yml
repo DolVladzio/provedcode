@@ -19,8 +19,6 @@
         - postgres_data:/var/lib/postgresql/data
     #--------------------------
     backend:
-      build:
-        context: ./backend
       image: ${DOCKER_LOGIN}/backend
       container_name: backend
       restart: always
@@ -38,10 +36,6 @@
         - db
     #--------------------------
     frontend:
-      build:
-        context: ./frontend
-        args:
-          REACT_APP_BASE_URL: ${REACT_APP_BASE_URL}
       image: ${DOCKER_LOGIN}/frontend
       container_name: frontend
       restart: always
