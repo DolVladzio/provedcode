@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    # == Create .env file and set all necessary envs ==========    
+    ######################################################
     - name: Creating .env file with necessary envs
       run: |
         echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
@@ -22,25 +22,26 @@ jobs:
         echo "SPRING_PROFILES_ACTIVE=${{ secrets.SPRING_PROFILES_ACTIVE }}" >> .env
         echo "REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}" >> .env
         echo "DOCKER_LOGIN=${{ secrets.DOCKER_LOGIN }}" >> .env
-    # == Setup the whole infrastructure =======================
+    ######################################################
     - name: Setup all infrastructure
       run: docker compose up -d
-    # == Wait 10sec to get backend' logs ======================
+    ######################################################
     - name: Waiting 10sec
       run: sleep 10
-    # == Look for created tables
+    ######################################################
     - name: Check db' tables
       run: docker exec db psql -U "${{ secrets.POSTGRES_USER }}" -d "${{ secrets.POSTGRES_DB }}" -c "\dt"
-    # == Looking for any error/issues =========================
+    ######################################################
     - name: Check frontend' logs
       run: docker logs frontend
-    # == Looking for any error/issues =========================
+    ######################################################
     - name: Check backend' logs
       run: docker logs backend
-    # == ===
+    ######################################################
     - name: Testing website
       uses: cypress-io/github-action@v6
       env:
         CYPRESS_BASE_URL: http://localhost:80
       with:
         working-directory: ./.github/tests
+    ######################################################
