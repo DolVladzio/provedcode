@@ -1,1 +1,0 @@
-export { ListProofsPage } from "./ListProofsPage";

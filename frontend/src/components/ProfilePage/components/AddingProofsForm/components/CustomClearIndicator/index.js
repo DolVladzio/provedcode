@@ -1,1 +1,0 @@
-export { CustomClearIndicator } from "./CustomClearIndicator";
