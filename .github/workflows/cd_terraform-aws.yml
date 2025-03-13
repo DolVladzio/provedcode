@@ -46,7 +46,7 @@ jobs:
       working-directory: ./EKS/k8s
       run: bash launch_kubernetes.sh
     ######################################################
-    - name: Wait 3m to launch k8s locally
+    - name: Wait 2m to launch k8s locally
       run: sleep 120
     ######################################################
     - name: Deleting everything
