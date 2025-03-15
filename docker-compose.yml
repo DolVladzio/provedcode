@@ -36,7 +36,7 @@
         - db
     #--------------------------
     frontend:
-      image: ${DOCKER_LOGIN}/frontend
+      image: ${DOCKER_LOGIN}/frontend:1.0
       container_name: frontend
       restart: always
       env_file:
