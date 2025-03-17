@@ -25,6 +25,8 @@ jobs:
         echo "SPRING_PROFILES_ACTIVE=${{ secrets.SPRING_PROFILES_ACTIVE }}" >> .env
         echo "REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}" >> .env
         echo "DOCKER_LOGIN=${{ secrets.DOCKER_LOGIN }}" >> .env
+        echo "BACKEND_IMAGE_VERSION=${{ secrets.BACKEND_IMAGE_VERSION }}" >> .env
+        echo "FRONTEND_IMAGE_VERSION=${{ secrets.FRONTEND_IMAGE_VERSION }}" >> .env
     ######################################################
     - name: Setup all infrastructure
       run: docker compose up -d
