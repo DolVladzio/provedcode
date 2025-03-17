@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: dolvladzio/frontend:1.0
+        image: dolvladzio/frontend:2.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80

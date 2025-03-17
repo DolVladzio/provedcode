@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: dolvladzio/backend
+        image: dolvladzio/backend:2.0
         ports:
         - containerPort: 8080
         # ----------------------------
