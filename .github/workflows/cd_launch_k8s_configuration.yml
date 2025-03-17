@@ -28,6 +28,26 @@ jobs:
       with:
         version: 'latest'
     ######################################################
+    - name: Creating app-config.yml file with envs
+      run: |
+        cat <<EOF > app-config.yml
+          ######################################################
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: app-config
+            namespace: default
+          data:
+            ######################################################
+            REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+            DB_URL: ${{ secrets.DB_URL }}
+            SPRING_PROFILES_ACTIVE: prod
+          ######################################################
+          EOF
+    ######################################################
     - name: Configure kubectl for EKS
       run: aws eks update-kubeconfig --region eu-central-1 --name k8s-EKS
     ######################################################
