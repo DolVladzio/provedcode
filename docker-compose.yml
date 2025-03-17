@@ -19,7 +19,7 @@
         - postgres_data:/var/lib/postgresql/data
     #--------------------------
     backend:
-      image: ${DOCKER_LOGIN}/backend
+      image: ${DOCKER_LOGIN}/backend:{BACKEND_IMAGE_VERSION}
       container_name: backend
       restart: always
       env_file:
@@ -36,7 +36,7 @@
         - db
     #--------------------------
     frontend:
-      image: ${DOCKER_LOGIN}/frontend:1.0
+      image: ${DOCKER_LOGIN}/frontend:{FRONTEND_IMAGE_VERSION}
       container_name: frontend
       restart: always
       env_file:
