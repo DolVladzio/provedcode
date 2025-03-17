@@ -13,6 +13,6 @@ data:
   POSTGRES_DB: provedcode
   POSTGRES_USER: app_user
   POSTGRES_PASSWORD: app_pass
-  DB_URL: db-service:5432/provedcode
+  DB_URL: db:5432/provedcode
   SPRING_PROFILES_ACTIVE: prod
   # ----------------------------
